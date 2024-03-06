@@ -1,3 +1,5 @@
+# Pathological arm
+
     ## [1] "Using the following formula: x ~ Treatment + Timepoint + (1 | animal_ID) + Treatment:Timepoint"
     ## [1] "Adjusting for FDR using Benjamini & Hochberg's procedure."
     ## [1] "Using the following formula: x ~ Treatment + Timepoint + (1 | animal_ID) + Treatment:Timepoint"
@@ -31,6 +33,8 @@ p_genus
 ```
 
 ![](README_files/figure-gfm/plot_path-3.png)<!-- -->
+
+# Therapeutic arm
 
     ## [1] "Using the following formula: x ~ Treatment + Timepoint + (1 | animal_ID) + Treatment:Timepoint"
     ## [1] "Adjusting for FDR using Benjamini & Hochberg's procedure."

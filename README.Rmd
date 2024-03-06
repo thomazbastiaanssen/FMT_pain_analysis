@@ -11,6 +11,8 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Pathological arm 
+
 ```{r source_path, message=FALSE, warning=FALSE, echo=FALSE}
 source("scripts/analysis_script_pathologial.R")
 ```
@@ -21,6 +23,7 @@ p_beta
 p_genus
 ```
 
+# Therapeutic arm 
 
 ```{r source_ther, message=FALSE, warning=FALSE, echo=FALSE}
 source("scripts/analysis_script_therapeutic.R")
