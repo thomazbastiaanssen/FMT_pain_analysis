@@ -1,0 +1,34 @@
+---
+output:
+  md_document:
+    variant: gfm
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r source_path, message=FALSE, warning=FALSE, echo=FALSE}
+source("scripts/analysis_script_pathologial.R")
+```
+
+```{r plot_path, message=FALSE, warning=FALSE}
+p_alpha
+p_beta
+p_genus
+```
+
+
+```{r source_ther, message=FALSE, warning=FALSE, echo=FALSE}
+source("scripts/analysis_script_therapeutic.R")
+```
+
+```{r plot_ther, message=FALSE, warning=FALSE}
+t_alpha
+t_beta
+t_GBM
+t_GMM
+```

@@ -1,0 +1,10 @@
+Analysis of Deviance Table (Type III Wald chisquare tests)
+
+Response: value
+                       Chisq Df Pr(>Chisq)    
+(Intercept)         868.0037  1    < 2e-16 ***
+Treatment             0.2152  1    0.64275    
+Timepoint             3.2811  1    0.07008 .  
+Treatment:Timepoint   0.0404  1    0.84062    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1

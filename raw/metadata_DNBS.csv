@@ -1,0 +1,155 @@
+ID,Animal ID-Day,Treatment_long,Experiment,sample_type,Treatment,animal_ID,Timepoint
+DNBS-1,1N-D0,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,1N,D0
+DNBS-2,1N-D7,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,1N,D7
+DNBS-3,1N-D32,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,1N,D32
+DNBS-4,2N-D0,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,2N,D0
+DNBS-5,2N-D7,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,2N,D7
+DNBS-6,2N-D32,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,2N,D32
+DNBS-7,3N-D0,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,3N,D0
+DNBS-8,3N-D7,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,3N,D7
+DNBS-9,3N-D32,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,3N,D32
+DNBS-10,4N-D0,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,4N,D0
+DNBS-11,4N-D7,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,4N,D7
+DNBS-12,4N-D32,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,4N,D32
+DNBS-13,5N-D0,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,5N,D0
+DNBS-14,5N-D7,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,5N,D7
+DNBS-15,5N-D32,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,5N,D32
+DNBS-16,6N-D0,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,6N,D0
+DNBS-17,6N-D7,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,6N,D7
+DNBS-18,6N-D32,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,6N,D32
+DNBS-19,7N-D0,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,7N,D0
+DNBS-20,7N-D7,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,7N,D7
+DNBS-21,7N-D32,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,7N,D32
+DNBS-22,8N-D0,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,8N,D0
+DNBS-23,8N-D7,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,8N,D7
+DNBS-24,8N-D32,Path. fecal sample abx + FMTCTR,Pathological,fecal sample,abx + FMTCTR,8N,D32
+DNBS-25,1V-D0,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,1V,D0
+DNBS-26,1V-D7,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,1V,D7
+DNBS-27,1V-D32,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,1V,D32
+DNBS-28,2V-D0,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,2V,D0
+DNBS-29,2V-D7,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,2V,D7
+DNBS-30,2V-D32,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,2V,D32
+DNBS-31,3V-D0,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,3V,D0
+DNBS-32,3V-D7,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,3V,D7
+DNBS-33,3V-D32,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,3V,D32
+DNBS-34,4V-D0,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,4V,D0
+DNBS-35,4V-D7,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,4V,D7
+DNBS-36,4V-D32,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,4V,D32
+DNBS-37,5V-D0,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,5V,D0
+DNBS-38,5V-D7,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,5V,D7
+DNBS-39,5V-D32,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,5V,D32
+DNBS-40,6V-D0,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,6V,D0
+DNBS-41,6V-D7,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,6V,D7
+DNBS-42,6V-D32,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,6V,D32
+DNBS-43,7V-D0,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,7V,D0
+DNBS-44,7V-D7,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,7V,D7
+DNBS-45,7V-D32,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,7V,D32
+DNBS-46,8V-D0,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,8V,D0
+DNBS-47,8V-D7,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,8V,D7
+DNBS-48,8V-D32,Path. fecal sample abx + FMTDNBS,Pathological,fecal sample,abx + FMTDNBS,8V,D32
+DNBS-49,1B-D0,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,1B,D0
+DNBS-50,1B-D7,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,1B,D7
+DNBS-51,1B-D32,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,1B,D42
+DNBS-52,2B-D0,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,2B,D0
+DNBS-53,2B-D7,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,2B,D7
+DNBS-54,2B-D32,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,2B,D42
+DNBS-55,3B-D0,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,3B,D0
+DNBS-56,3B-D7,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,3B,D7
+DNBS-57,3B-D32,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,3B,D42
+DNBS-58,4B-D0,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,4B,D0
+DNBS-59,4B-D7,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,4B,D7
+DNBS-60,4B-D32,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,4B,D42
+DNBS-61,5B-D0,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,5B,D0
+DNBS-62,5B-D7,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,5B,D7
+DNBS-63,5B-D32,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,5B,D42
+DNBS-64,9B-D0,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,9B,D0
+DNBS-65,9B-D7,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,9B,D7
+DNBS-66,9B-D32,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,9B,D42
+DNBS-67,10B-D0,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,10B,D0
+DNBS-68,10B-D7,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,10B,D7
+DNBS-69,10B-D32,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,10B,D42
+DNBS-70,11B-D0,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,11B,D0
+DNBS-71,11B-D7,Ther. fecal sample DNBS + FMTCTR,Therapeutic,fecal sample,DNBS + FMTCTR,11B,D7
+DNBS-72,1R-D0,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,1R,D0
+DNBS-73,1R-D7,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,1R,D7
+DNBS-74,1R-D32,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,1R,D42
+DNBS-75,2R-D0,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,2R,D0
+DNBS-76,2R-D7,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,2R,D7
+DNBS-77,2R-D32,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,2R,D42
+DNBS-78,3R-D0,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,3R,D0
+DNBS-79,3R-D7,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,3R,D7
+DNBS-80,3R-D32,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,3R,D42
+DNBS-81,4R-D0,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,4R,D0
+DNBS-82,4R-D7,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,4R,D7
+DNBS-83,4R-D32,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,4R,D42
+DNBS-84,5R-D0,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,5R,D0
+DNBS-85,5R-D7,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,5R,D7
+DNBS-86,5R-D32,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,5R,D42
+DNBS-87,9R-D0,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,9R,D0
+DNBS-88,9R-D32,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,9R,D42
+DNBS-89,10R-D0,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,10R,D0
+DNBS-90,10R-D7,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,10R,D7
+DNBS-91,10R-D32,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,10R,D42
+DNBS-92,11R-D0,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,11R,D0
+DNBS-93,11R-D7,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,11R,D7
+DNBS-94,11R-D32,Ther. fecal sample DNBS + FMTDNBS,Therapeutic,fecal sample,DNBS + FMTDNBS,11R,D42
+DNBS-95,I° FMT pool 1,Path. FMT Pool CTRL,Pathological,FMT Pool,CTRL,I° FMT pool 1,FMT
+DNBS-96,I° FMT pool 2,Path. FMT Pool CTRL,Pathological,FMT Pool,CTRL,I° FMT pool 2,FMT
+DNBS-97,I° FMT pool 3,Path. FMT Pool CTRL,Pathological,FMT Pool,CTRL,I° FMT pool 3,FMT
+DNBS-98,I° FMT pool 4,Path. FMT Pool CTRL,Pathological,FMT Pool,CTRL,I° FMT pool 4,FMT
+DNBS-99,I° FMT pool 5,Path. FMT Pool CTRL,Pathological,FMT Pool,CTRL,I° FMT pool 5,FMT
+DNBS-100,I° FMT pool 1,Path. FMT Pool DNBS,Pathological,FMT Pool,DNBS,I° FMT pool 1,FMT
+DNBS-101,I° FMT pool 2,Path. FMT Pool DNBS,Pathological,FMT Pool,DNBS,I° FMT pool 2,FMT
+DNBS-102,I° FMT pool 3,Path. FMT Pool DNBS,Pathological,FMT Pool,DNBS,I° FMT pool 3,FMT
+DNBS-103,I° FMT pool 4,Path. FMT Pool DNBS,Pathological,FMT Pool,DNBS,I° FMT pool 4,FMT
+DNBS-104,I° FMT pool 5,Path. FMT Pool DNBS,Pathological,FMT Pool,DNBS,I° FMT pool 5,FMT
+DNBS-105,II° FMT pool 1,Path. FMT Pool CTRL,Pathological,FMT Pool,CTRL,II° FMT pool 1,FMT
+DNBS-106,II° FMT pool 2,Path. FMT Pool CTRL,Pathological,FMT Pool,CTRL,II° FMT pool 2,FMT
+DNBS-107,II° FMT pool 3,Path. FMT Pool CTRL,Pathological,FMT Pool,CTRL,II° FMT pool 3,FMT
+DNBS-108,II° FMT pool 4,Path. FMT Pool CTRL,Pathological,FMT Pool,CTRL,II° FMT pool 4,FMT
+DNBS-109,II° FMT pool 5,Path. FMT Pool CTRL,Pathological,FMT Pool,CTRL,II° FMT pool 5,FMT
+DNBS-110,II° FMT pool 1,Path. FMT Pool DNBS,Pathological,FMT Pool,DNBS,II° FMT pool 1,FMT
+DNBS-111,II° FMT pool 2,Path. FMT Pool DNBS,Pathological,FMT Pool,DNBS,II° FMT pool 2,FMT
+DNBS-112,II° FMT pool 3,Path. FMT Pool DNBS,Pathological,FMT Pool,DNBS,II° FMT pool 3,FMT
+DNBS-113,II° FMT pool 4,Path. FMT Pool DNBS,Pathological,FMT Pool,DNBS,II° FMT pool 4,FMT
+DNBS-114,II° FMT pool 5,Path. FMT Pool DNBS,Pathological,FMT Pool,DNBS,II° FMT pool 5,FMT
+DNBS-115,I° FMT pool 1,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,I° FMT pool 1,FMT
+DNBS-116,I° FMT pool 2,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,I° FMT pool 2,FMT
+DNBS-117,I° FMT pool 3,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,I° FMT pool 3,FMT
+DNBS-118,I° FMT pool 4,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,I° FMT pool 4,FMT
+DNBS-119,I° FMT pool 5,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,I° FMT pool 5,FMT
+DNBS-120,I° FMT pool 1,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,I° FMT pool 1,FMT
+DNBS-121,I° FMT pool 2,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,I° FMT pool 2,FMT
+DNBS-122,I° FMT pool 3,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,I° FMT pool 3,FMT
+DNBS-123,I° FMT pool 4,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,I° FMT pool 4,FMT
+DNBS-124,I° FMT pool 5,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,I° FMT pool 5,FMT
+DNBS-125,II° FMT pool 1,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,II° FMT pool 1,FMT
+DNBS-126,II° FMT pool 2,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,II° FMT pool 2,FMT
+DNBS-127,II° FMT pool 3,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,II° FMT pool 3,FMT
+DNBS-128,II° FMT pool 4,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,II° FMT pool 4,FMT
+DNBS-129,II° FMT pool 5,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,II° FMT pool 5,FMT
+DNBS-130,II° FMT pool 1,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,II° FMT pool 1,FMT
+DNBS-131,II° FMT pool 2,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,II° FMT pool 2,FMT
+DNBS-132,II° FMT pool 3,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,II° FMT pool 3,FMT
+DNBS-133,II° FMT pool 4,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,II° FMT pool 4,FMT
+DNBS-134,II° FMT pool 5,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,II° FMT pool 5,FMT
+DNBS-135,III° FMT pool 1,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,III° FMT pool 1,FMT
+DNBS-136,III° FMT pool 2,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,III° FMT pool 2,FMT
+DNBS-137,III° FMT pool 3,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,III° FMT pool 3,FMT
+DNBS-138,III° FMT pool 4,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,III° FMT pool 4,FMT
+DNBS-139,III° FMT pool 5,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,III° FMT pool 5,FMT
+DNBS-140,III° FMT pool 1,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,III° FMT pool 1,FMT
+DNBS-141,III° FMT pool 2,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,III° FMT pool 2,FMT
+DNBS-142,III° FMT pool 3,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,III° FMT pool 3,FMT
+DNBS-143,III° FMT pool 4,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,III° FMT pool 4,FMT
+DNBS-144,III° FMT pool 5,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,III° FMT pool 5,FMT
+DNBS-145,IV° FMT pool 1,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,IV° FMT pool 1,FMT
+DNBS-146,IV° FMT pool 2,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,IV° FMT pool 2,FMT
+DNBS-147,IV° FMT pool 3,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,IV° FMT pool 3,FMT
+DNBS-148,IV° FMT pool 4,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,IV° FMT pool 4,FMT
+DNBS-149,IV° FMT pool 5,Ther. FMT Pool CTRL,Therapeutic,FMT Pool,CTRL,IV° FMT pool 5,FMT
+DNBS-150,IV° FMT pool 1,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,IV° FMT pool 1,FMT
+DNBS-151,IV° FMT pool 2,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,IV° FMT pool 2,FMT
+DNBS-152,IV° FMT pool 3,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,IV° FMT pool 3,FMT
+DNBS-153,IV° FMT pool 4,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,IV° FMT pool 4,FMT
+DNBS-154,IV° FMT pool 5,Ther. FMT Pool DNBS,Therapeutic,FMT Pool,DNBS,IV° FMT pool 5,FMT
