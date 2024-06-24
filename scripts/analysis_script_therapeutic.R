@@ -172,7 +172,7 @@ pca$`Sample Type`       = metadata$sample_type
 pca$Timepoint           = metadata$Timepoint
 
 #First, the main plot. Plot the first two components of the PCA
-t_beta <- ggplot(pca %>% mutate(type = "/nMicrobial composition over time (PCA)\n"), 
+t_beta <- ggplot(pca %>% mutate(type = "\nMicrobial composition over time (PCA)\n"), 
                  aes(x       = PC1, 
                      y       = PC2, 
                      fill    = interaction(Treatment, Timepoint),
