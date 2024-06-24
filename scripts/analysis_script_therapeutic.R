@@ -200,7 +200,7 @@ t_beta <- ggplot(pca %>% mutate(type = "Microbial composition over time (PCA)"),
   scale_alpha_manual(values = c("FMT Pool" = 0, "fecal sample" = 1)) + 
   scale_colour_manual(values = c("abx + FMTCTR" = "#3690c0", "abx + FMTDNBS" = "#ef6548")) +
   
-  #facet_wrap(~Timepoint) +
+  facet_wrap(~type) +
   #Adjust labels
   xlab(paste("PC1: ", pc1,  "%", sep="")) + 
   ylab(paste("PC2: ", pc2,  "%", sep="")) + 
