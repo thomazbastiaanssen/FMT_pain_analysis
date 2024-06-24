@@ -21,7 +21,7 @@ library(patchwork)
 ```
 
 ``` r
-(p_alpha + p_beta + plot_layout(widths = c(3, 2)))/p_genus + 
+(p_alpha + p_beta + plot_layout(widths = c(3, 2)) ) / p_genus + 
   plot_layout(guides = 'collect') + 
   plot_annotation(tag_levels = "i")
 ```
@@ -47,7 +47,7 @@ library(patchwork)
     ## [1] "Using theoretical distribution."
 
 ``` r
-(t_alpha + t_beta + plot_layout(widths = c(3, 2))) /t_GBM + 
+(t_alpha + t_beta + plot_layout(widths = c(3, 2)) ) / t_GBM + 
   plot_layout(guides = 'collect') + 
   plot_annotation(tag_levels = "i")
 ```

@@ -99,7 +99,7 @@ p_alpha <- alpha_diversity %>%
   guides(shape = "none", fill = guide_legend(override.aes = list(shape = c(23, 23, 21, 21, 21, 21)))) +
   ggh4x::facet_nested(name~Timepoint*type, scales = "free", strip = ggh4x::strip_nested(bleed = TRUE)) + theme_bw()  +
 
-  ylab(NULL) + xlab(NULL) 
+  ylab("Alpha diversity index") + xlab(NULL) 
 
 
 #Alpha Div stats Chao1

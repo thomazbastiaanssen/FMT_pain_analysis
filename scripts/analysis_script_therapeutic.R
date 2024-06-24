@@ -99,7 +99,7 @@ t_alpha <- alpha_diversity %>%
   guides(shape = "none", fill = guide_legend(override.aes = list(shape = c(23, 23, 21, 21, 21, 21)))) +
   
 
-  ylab(NULL) + xlab(NULL) + 
+  ylab("Alpha diversity index") + xlab(NULL) + 
   guides(colour = "none", alpha = "none")
 
 
@@ -319,7 +319,7 @@ t_GBM <- GBMBH %>%
   scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "DNBS + FMTCTR.D0"  = "#9ecae1", "DNBS + FMTCTR.D42"  = "#08519c", 
                                "DNBS.FMT" = "#67000d", "DNBS + FMTDNBS.D0" = "#fc9272", "DNBS + FMTDNBS.D42" = "#a50f15"), 
                     "Legend") +
-  ylab(NULL) + xlab(NULL) + theme_bw() + theme(text = element_text(size = 12)) + 
+  ylab("Gut-brain module abundance (CLR)") + xlab(NULL) + theme_bw() + theme(text = element_text(size = 12)) + 
   guides(colour = "none", alpha = "none")
 
 
