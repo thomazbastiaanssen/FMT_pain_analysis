@@ -86,8 +86,8 @@ t_alpha <- alpha_diversity %>%
              y     = value, 
              fill  = interaction(Treatment, Timepoint), 
              group = Treatment)) + 
-  geom_boxplot(alpha = 1/2, coef = 100, position = position_dodge()) + 
-  geom_beeswarm(size = 4, cex = 3, shape = 21) + 
+  geom_boxplot(alpha = 1/2, coef = 100, position = position_dodge(), show.legend = FALSE) + 
+  geom_beeswarm(size = 4, cex = 3, shape = 21, show.legend = FALSE) + 
   # scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "DNBS + FMTCTR.D0"  = "#9ecae1", "DNBS + FMTCTR.D7"  = "#4292c6", "DNBS + FMTCTR.D42"  = "#08519c", 
   #                              "DNBS.FMT" = "#67000d", "DNBS + FMTDNBS.D0" = "#fc9272", "DNBS + FMTDNBS.D7" = "#ef3b2c", "DNBS + FMTDNBS.D42" = "#a50f15"), 
   #                   "Legend") +
@@ -95,9 +95,12 @@ t_alpha <- alpha_diversity %>%
   scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "DNBS + FMTCTR.D0"  = "#9ecae1", "DNBS + FMTCTR.D42"  = "#08519c", 
                                "DNBS.FMT" = "#67000d", "DNBS + FMTDNBS.D0" = "#fc9272", "DNBS + FMTDNBS.D42" = "#a50f15"), 
                     "Legend") +
-  facet_grid(name~Timepoint*type, scales = "free") + theme_bw()  +
+  ggh4x::facet_nested(name~Timepoint*type, scales = "free", strip = ggh4x::strip_nested(bleed = TRUE)) + theme_bw()  +
+  guides(shape = "none", fill = guide_legend(override.aes = list(shape = c(23, 23, 21, 21, 21, 21)))) +
   
-  ylab("") + xlab("") 
+
+  ylab("") + xlab("") + 
+  guides(colour = "none", alpha = "none")
 
 
 #Alpha Div stats Chao1
@@ -169,18 +172,19 @@ pca$`Sample Type`       = metadata$sample_type
 pca$Timepoint           = metadata$Timepoint
 
 #First, the main plot. Plot the first two components of the PCA
-t_beta <- ggplot(pca, aes(x       = PC1, 
-                y       = PC2, 
-                fill    = interaction(Treatment, Timepoint),
-                colour  = Treatment,
-                group   = ID, 
-                shape = `Sample Type`, 
-                alpha = `Sample Type`)) +  
+t_beta <- ggplot(pca %>% mutate(type = "Microbial composition over time (PCA)"), 
+                 aes(x       = PC1, 
+                     y       = PC2, 
+                     fill    = interaction(Treatment, Timepoint),
+                     colour  = Treatment,
+                     group   = ID, 
+                     shape = `Sample Type`, 
+                     alpha = `Sample Type`)) +  
   
   #Create the points and ellipses
   geom_path() +
-  geom_point(size=5, col = "black", alpha = 1) + 
-  stat_ellipse(geom = "polygon", alpha = 1/4) +
+  geom_point(size=5, col = "black", alpha = 1, show.legend = FALSE) + 
+  stat_ellipse(geom = "polygon", alpha = 1/4, show.legend = FALSE) +
   
   #Adjust appearance
   guides(fill = guide_legend(override.aes = list(shape = c(21)))) +
@@ -192,6 +196,7 @@ t_beta <- ggplot(pca, aes(x       = PC1,
   scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "DNBS + FMTCTR.D0"  = "#9ecae1", "DNBS + FMTCTR.D42"  = "#08519c", 
                                "DNBS.FMT" = "#67000d", "DNBS + FMTDNBS.D0" = "#fc9272", "DNBS + FMTDNBS.D42" = "#a50f15"), 
                     "Legend") +
+  guides(shape = "none", fill = guide_legend(override.aes = list(shape = c(23, 23, 21, 21, 21, 21)))) +
   scale_alpha_manual(values = c("FMT Pool" = 0, "fecal sample" = 1)) + 
   scale_colour_manual(values = c("abx + FMTCTR" = "#3690c0", "abx + FMTDNBS" = "#ef6548")) +
   
@@ -303,8 +308,8 @@ t_GBM <- GBMBH %>%
   ggplot(aes(x     = Timepoint, 
              y     = value, 
              fill  = interaction(Treatment, Timepoint))) + 
-  geom_boxplot(alpha = 1/2, coef = 100) +
-  geom_dotplot(binaxis = "y", stackdir = "center", position = position_dodge(0.75)) + 
+  geom_boxplot(alpha = 1/2, coef = 100, show.legend = FALSE) +
+  geom_dotplot(binaxis = "y", stackdir = "center", position = position_dodge(0.75), show.legend = FALSE) + 
   
   facet_wrap(~name, scales = "free_y", ncol = 3) +
   # scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "DNBS + FMTCTR.D0"  = "#9ecae1", "DNBS + FMTCTR.D7"  = "#4292c6", "DNBS + FMTCTR.D42"  = "#08519c", 
@@ -314,7 +319,9 @@ t_GBM <- GBMBH %>%
   scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "DNBS + FMTCTR.D0"  = "#9ecae1", "DNBS + FMTCTR.D42"  = "#08519c", 
                                "DNBS.FMT" = "#67000d", "DNBS + FMTDNBS.D0" = "#fc9272", "DNBS + FMTDNBS.D42" = "#a50f15"), 
                     "Legend") +
-  ylab("") + xlab("") + theme_bw() + theme(text = element_text(size = 12))
+  ylab("") + xlab("") + theme_bw() + theme(text = element_text(size = 12)) + 
+  guides(colour = "none", alpha = "none")
+
 
 # GMMs --------------------------------------------------------------------
 
@@ -367,8 +374,8 @@ t_GMM <- GMMBH %>%
   ggplot(aes(x     = Timepoint, 
              y     = value, 
              fill  = interaction(Treatment, Timepoint))) + 
-  geom_boxplot(alpha = 1/2, coef = 100) +
-  geom_dotplot(binaxis = "y", stackdir = "center", position = position_dodge(0.75)) + 
+  geom_boxplot(alpha = 1/2, coef = 100, show.legend = FALSE) +
+  geom_dotplot(binaxis = "y", stackdir = "center", position = position_dodge(0.75), show.legend = FALSE) + 
   
   facet_wrap(~name, scales = "free_y", ncol = 4) +
   # scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "DNBS + FMTCTR.D0"  = "#9ecae1", "DNBS + FMTCTR.D7"  = "#4292c6", "DNBS + FMTCTR.D42"  = "#08519c", 
@@ -378,7 +385,8 @@ t_GMM <- GMMBH %>%
   scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "DNBS + FMTCTR.D0"  = "#9ecae1", "DNBS + FMTCTR.D42"  = "#08519c", 
                                "DNBS.FMT" = "#67000d", "DNBS + FMTDNBS.D0" = "#fc9272", "DNBS + FMTDNBS.D42" = "#a50f15"), 
                     "Legend") +
-  ylab("") + xlab("") + theme_bw() + theme(text = element_text(size = 12))
+  ylab("") + xlab("") + theme_bw() + theme(text = element_text(size = 12)) + 
+  guides(colour = "none", alpha = "none")
 
 
 

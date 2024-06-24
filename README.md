@@ -17,22 +17,14 @@
     ## [1] "Using theoretical distribution."
 
 ``` r
-p_alpha
+library(patchwork)
+```
+
+``` r
+(p_alpha + p_beta)/p_genus + plot_layout(guides = 'collect') + plot_annotation(tag_levels = "i")
 ```
 
 ![](README_files/figure-gfm/plot_path-1.png)<!-- -->
-
-``` r
-p_beta
-```
-
-![](README_files/figure-gfm/plot_path-2.png)<!-- -->
-
-``` r
-p_genus
-```
-
-![](README_files/figure-gfm/plot_path-3.png)<!-- -->
 
 # Therapeutic arm
 
@@ -53,25 +45,15 @@ p_genus
     ## [1] "Using theoretical distribution."
 
 ``` r
-t_alpha
+((t_alpha | t_beta)/(t_GBM)) + plot_layout(guides = 'collect') + plot_annotation(tag_levels = "i")
 ```
 
 ![](README_files/figure-gfm/plot_ther-1.png)<!-- -->
 
 ``` r
-t_beta
+# 
+# t_alpha
+# t_beta
+# t_GBM
+# t_GMM
 ```
-
-![](README_files/figure-gfm/plot_ther-2.png)<!-- -->
-
-``` r
-t_GBM
-```
-
-![](README_files/figure-gfm/plot_ther-3.png)<!-- -->
-
-``` r
-t_GMM
-```
-
-![](README_files/figure-gfm/plot_ther-4.png)<!-- -->

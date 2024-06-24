@@ -88,15 +88,16 @@ p_alpha <- alpha_diversity %>%
              y     = value, 
              fill  = interaction(Treatment, Timepoint), 
              group = Treatment)) + 
-  geom_boxplot(alpha = 1/2, coef = 100, position = position_dodge()) + 
-  geom_beeswarm(size = 4, cex = 3, shape = 21) + 
+  geom_boxplot(alpha = 1/2, coef = 100, position = position_dodge(), show.legend = FALSE) + 
+  geom_beeswarm(size = 4, cex = 3, shape = 21, show.legend = FALSE) + 
  # scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx + FMTCTR.D0" = "#9ecae1", "abx + FMTCTR.D7" = "#4292c6", "abx + FMTCTR.D32" = "#08519c", 
  #                              "DNBS.FMT" = "#67000d", "abx + FMTDNBS.D0" = "#fc9272", "abx + FMTDNBS.D7" = "#ef3b2c", "abx + FMTDNBS.D32" = "#a50f15"), 
  #                                        "Legend") +
   scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx + FMTCTR.D0" = "#9ecae1", "abx + FMTCTR.D32" = "#08519c", 
                                "DNBS.FMT" = "#67000d", "abx + FMTDNBS.D0" = "#fc9272", "abx + FMTDNBS.D32" = "#a50f15"), 
                     "Legend") +
-  facet_grid(name~Timepoint*type, scales = "free") + theme_bw()  +
+  guides(shape = "none", fill = guide_legend(override.aes = list(shape = c(23, 23, 21, 21, 21, 21)))) +
+  ggh4x::facet_nested(name~Timepoint*type, scales = "free", strip = ggh4x::strip_nested(bleed = TRUE)) + theme_bw()  +
 
   ylab("") + xlab("") 
 
@@ -169,7 +170,8 @@ pca$`Sample Type`       = metadata$sample_type
 pca$Timepoint           = metadata$Timepoint
 
 #First, the main plot. Plot the first two components of the PCA
-p_beta <- ggplot(pca, aes(x       = PC1, 
+p_beta <- ggplot(pca %>% mutate(type = "Microbial composition over time (PCA)"), 
+            aes(x       = PC1, 
                 y       = PC2, 
                 fill    = interaction(Treatment, Timepoint),
                 colour  = Treatment,
@@ -179,11 +181,11 @@ p_beta <- ggplot(pca, aes(x       = PC1,
   
   #Create the points and ellipses
   geom_path() +
-  geom_point(size=5, col = "black", alpha = 1) + 
-  stat_ellipse(geom = "polygon", alpha = 1/4) +
+  geom_point(size=5, col = "black", alpha = 1, show.legend = FALSE) + 
+  stat_ellipse(geom = "polygon", alpha = 1/4, show.legend = FALSE) +
   
   #Adjust appearance
-  guides(fill = guide_legend(override.aes = list(shape = c(21)))) +
+  guides(shape = "none", fill = guide_legend(override.aes = list(shape = c(23, 23, 21, 21, 21, 21)))) +
   scale_shape_manual(values = c("FMT Pool" = 23, "fecal sample" = 21)) +
   # scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx + FMTCTR.D0" = "#9ecae1", "abx + FMTCTR.D7" = "#4292c6", "abx + FMTCTR.D32" = "#08519c", 
   #                              "DNBS.FMT" = "#67000d", "abx + FMTDNBS.D0" = "#fc9272", "abx + FMTDNBS.D7" = "#ef3b2c", "abx + FMTDNBS.D32" = "#a50f15"), 
@@ -194,7 +196,7 @@ p_beta <- ggplot(pca, aes(x       = PC1,
   scale_alpha_manual(values = c("FMT Pool" = 0, "fecal sample" = 1)) + 
   scale_colour_manual(values = c("abx + FMTCTR" = "#3690c0", "abx + FMTDNBS" = "#ef6548")) +
   
-  #facet_wrap(~Timepoint) +
+  facet_wrap(~type) +
   #Adjust labels
   xlab(paste("PC1: ", pc1,  "%", sep="")) + 
   ylab(paste("PC2: ", pc2,  "%", sep="")) + 
@@ -237,12 +239,14 @@ p_genus <- genBH %>%
   ggplot(aes(x     = Timepoint, 
              y     = value, 
              fill  = interaction(Treatment, Timepoint))) + 
-  geom_boxplot(alpha = 1/2, coef = 100) +
-  geom_dotplot(binaxis = "y", stackdir = "center", position = position_dodge(0.75)) + 
+  geom_boxplot(alpha = 1/2, coef = 100, show.legend = FALSE) +
+  geom_dotplot(binaxis = "y", stackdir = "center", position = position_dodge(0.75), show.legend = FALSE) + 
   
   facet_wrap(~name, scales = "free_y", ncol = 4) +
   scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx + FMTCTR.D0"  = "#9ecae1", "abx + FMTCTR.D7"  = "#4292c6", "abx + FMTCTR.D32"  = "#08519c", 
                                "DNBS.FMT" = "#67000d", "abx + FMTDNBS.D0" = "#fc9272", "abx + FMTDNBS.D7" = "#ef3b2c", "abx + FMTDNBS.D32" = "#a50f15"), "Legend") +
+  guides(shape = "none", fill = guide_legend(override.aes = list(shape = c(23, 23, 21, 21, 21, 21)))) +
+  
   ylab("Genus-level abundance (CLR)") + xlab("") + theme_bw() + theme(text = element_text(size = 12))
 
 # GBMs --------------------------------------------------------------------

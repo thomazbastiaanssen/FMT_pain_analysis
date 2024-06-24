@@ -17,10 +17,13 @@ knitr::opts_chunk$set(echo = TRUE)
 source("scripts/analysis_script_pathologial.R")
 ```
 
-```{r plot_path, message=FALSE, warning=FALSE, fig.width=14}
-p_alpha
-p_beta
-p_genus
+```{r load_libraries, message=FALSE, warning=FALSE}
+library(patchwork)
+```
+
+
+```{r plot_path, message=FALSE, warning=FALSE, fig.width=16, fig.height=8}
+(p_alpha + p_beta)/p_genus + plot_layout(guides = 'collect') + plot_annotation(tag_levels = "i")
 ```
 
 # Therapeutic arm 
@@ -30,8 +33,11 @@ source("scripts/analysis_script_therapeutic.R")
 ```
 
 ```{r plot_ther, message=FALSE, warning=FALSE, fig.width=14}
-t_alpha
-t_beta
-t_GBM
-t_GMM
+((t_alpha | t_beta)/(t_GBM)) + plot_layout(guides = 'collect') + plot_annotation(tag_levels = "i")
+
+# 
+# t_alpha
+# t_beta
+# t_GBM
+# t_GMM
 ```
