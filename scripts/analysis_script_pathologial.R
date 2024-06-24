@@ -99,7 +99,7 @@ p_alpha <- alpha_diversity %>%
   guides(shape = "none", fill = guide_legend(override.aes = list(shape = c(23, 23, 21, 21, 21, 21)))) +
   ggh4x::facet_nested(name~Timepoint*type, scales = "free", strip = ggh4x::strip_nested(bleed = TRUE)) + theme_bw()  +
 
-  ylab("") + xlab("") 
+  ylab(NULL) + xlab(NULL) 
 
 
 #Alpha Div stats Chao1
@@ -247,7 +247,7 @@ p_genus <- genBH %>%
                                "DNBS.FMT" = "#67000d", "abx + FMTDNBS.D0" = "#fc9272", "abx + FMTDNBS.D7" = "#ef3b2c", "abx + FMTDNBS.D32" = "#a50f15"), "Legend") +
   guides(shape = "none", fill = guide_legend(override.aes = list(shape = c(23, 23, 21, 21, 21, 21)))) +
   
-  ylab("Genus-level abundance (CLR)") + xlab("") + theme_bw() + theme(text = element_text(size = 12))
+  ylab("Genus-level abundance (CLR)") + xlab(NULL) + theme_bw() + theme(text = element_text(size = 12))
 
 # GBMs --------------------------------------------------------------------
 
@@ -306,7 +306,7 @@ GBMBH <-  GBMs.exp[GBMs.glm[GBMs.glm$`anovas.Treatment:Timepoint Pr(>F).BH` < 0.
 #   facet_wrap(~name, scales = "free_y", ncol = 4) +
 #   scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx + FMTCTR.D0"  = "#9ecae1", "abx + FMTCTR.D7"  = "#4292c6", "abx + FMTCTR.D32"  = "#08519c", 
 #                                "DNBS.FMT" = "#67000d", "abx + FMTDNBS.D0" = "#fc9272", "abx + FMTDNBS.D7" = "#ef3b2c", "abx + FMTDNBS.D32" = "#a50f15"), "Legend") +
-#   ylab("") + xlab("") + theme_bw() + theme(text = element_text(size = 12))
+#   ylab(NULL) + xlab(NULL) + theme_bw() + theme(text = element_text(size = 12))
 
 # GMMs --------------------------------------------------------------------
 
@@ -364,7 +364,7 @@ GMMBH <-  GMMs.exp[GMMs.glm[GMMs.glm$`anovas.Treatment:Timepoint Pr(>F).BH` < 0.
 #   facet_wrap(~name, scales = "free_y", ncol = 4) +
 #   scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx + FMTCTR.D0"  = "#9ecae1", "abx + FMTCTR.D7"  = "#4292c6", "abx + FMTCTR.D32"  = "#08519c", 
 #                                "DNBS.FMT" = "#67000d", "abx + FMTDNBS.D0" = "#fc9272", "abx + FMTDNBS.D7" = "#ef3b2c", "abx + FMTDNBS.D32" = "#a50f15"), "Legend") +
-#   ylab("") + xlab("") + theme_bw() + theme(text = element_text(size = 12))
+#   ylab(NULL) + xlab(NULL) + theme_bw() + theme(text = element_text(size = 12))
 
 
 
@@ -442,7 +442,7 @@ p_anansi_corplot <- ggplot(data = anansiLong,
                                "abx + FMTDNBS"  = "#b2182b", 
                                "All"        = "gray"))+
   theme_bw() + 
-  ylab("") + 
+  ylab(NULL) + 
   xlab("Pearson's rho")
 
 
