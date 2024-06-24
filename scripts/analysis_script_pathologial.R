@@ -181,7 +181,7 @@ p_beta <- ggplot(pca %>% mutate(type = "Microbial composition over time (PCA)"),
   
   #Create the points and ellipses
   geom_path() +
-  geom_point(size=5, col = "black", alpha = 1, show.legend = FALSE) + 
+  geom_point(size=5, col = "black", alpha = 1) + 
   stat_ellipse(geom = "polygon", alpha = 1/4, show.legend = FALSE) +
   
   #Adjust appearance

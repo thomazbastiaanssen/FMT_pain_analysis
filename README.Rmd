@@ -32,7 +32,7 @@ library(patchwork)
 source("scripts/analysis_script_therapeutic.R")
 ```
 
-```{r plot_ther, message=FALSE, warning=FALSE, fig.width=14}
+```{r plot_ther, message=FALSE, warning=FALSE, fig.width=16, fig.height=8}
 ((t_alpha | t_beta)/(t_GBM)) + plot_layout(guides = 'collect') + plot_annotation(tag_levels = "i")
 
 # 
