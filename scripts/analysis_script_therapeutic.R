@@ -391,114 +391,114 @@ t_GMM <- GMMBH %>%
 
 
 # anansi ------------------
-library(anansi)
-
-metab    <- read.delim("raw/Therapeutic_FMT_for_anansi.csv", sep = ",", row.names = 1, header = T)
-KOs      <- read.delim("raw/pred_metagenome_unstrat.tsv", sep = "\t", row.names = 1, header = T)
-metadata <- read.delim("raw/metadata_DNBS.csv", sep = ",")
-
-
-#Fix metadata in accordance with genus names
-metadata$ID <- gsub(metadata$ID, pattern = "-", replacement = ".")
-metadata = metadata[!metadata$ID %in% c("DNBS.17", "DNBS.29", "DNBS.38", "DNBS.41", "DNBS.8"),]
-
-metadata$Timepoint = factor(metadata$Timepoint, levels = c("FMT", "D0", "D7", "D42"))
-metadata = metadata[metadata$Experiment == "Therapeutic",]
-
-metadata = metadata[metadata$Timepoint == "D42",]
-
-metadata = metadata[!metadata$ID %in% c("DNBS.4", "DNBS.15", "DNBS.28", "DNBS.33", "DNBS.43", "DNBS.100", "DNBS.104"),]
-
-KOs      = KOs[,metadata$ID]
-
-KOs.exp  = clr_c(KOs)
-
-t2       = t(KOs.exp)
-
-metab    = metab[,metadata$ID]
-
-metab.exp = clr_c(metab) 
-
-t1       = t(metab.exp)
-
-data(dictionary)
-anansi_dic = anansi_dic
-web <- weaveWebFromTables(tableY = t1, tableX = t2, dictionary = anansi_dic)
-
-anansi_out <- anansi(web    = web,          #Generated above
-                     method = "pearson",    #define the type of correlation used 
-                     formula = ~ Treatment, #Define formula to be fitted 
-                     metadata = metadata,   #where is the metadata
-                     adjust.method = "BH",  #apply the Benjamini-Hochberg procedure for FDR
-                     verbose = T            #To let you know what's happening
-)
-
-
-anansiLong <- spinToLong(anansi_output = anansi_out, translate = T, 
-                         Y_translation = anansi::cpd_translation, 
-                         X_translation = anansi::KO_translation)  
-#Now it's ready to be plugged into ggplot2, though let's clean up a bit more. 
-
-#Only consider interactions where the entire model fits well enough. 
-anansiLong <- anansiLong[anansiLong$model_full_q.values < 0.1,]
-
-t_anansi_corplot <- ggplot(data = anansiLong, 
-                           aes(x      = r.values, 
-                               y      = feature_X, 
-                               fill   = type, 
-                               alpha  = model_disjointed_Treatment_p.values < 0.05)) + 
-  
-  #Make a vertical dashed red line at x = 0
-  geom_vline(xintercept = 0, linetype = "dashed", colour = "red")+
-  
-  #Points show  raw correlation coefficients
-  geom_point(shape = 21, size = 3) + 
-  
-  #facet per compound
-  ggforce::facet_col(~feature_Y, space = "free", scales = "free_y") + 
-  
-  #fix the scales, labels, theme and other layout
-  scale_y_discrete(limits = rev, position = "right") +
-  scale_alpha_manual(values = c("TRUE" = 1, "FALSE" = 1/3)) +
-  scale_fill_manual(values = c("DNBS + FMTCTR"  = "#2166ac", 
-                               "DNBS + FMTDNBS" = "#b2182b", 
-                               "All"            = "gray"))+
-  theme_bw() + 
-  ylab(NULL) + 
-  xlab("Pearson's rho")
-
-
-outPlots = spinToPlots(anansi_out,
-                       target = anansi_out@input@web@dictionary &
-                         anansi_out@output@model_results$modelfit@q.values < 0.1, 
-                       Y_translation = anansi::cpd_translation, 
-                       X_translation = anansi::KO_translation, translate = T )
-
-#load ggplot2 and patchwork for plotting
-
-library(ggplot2)
-library(patchwork)
-
-plotted = lapply(outPlots, FUN = function(p){
-  
-  #Main ggplot call
-  ggplot(data = p$data, aes(x = X, y = Y, fill = groups)) +
-    
-    #Establish geoms:
-    geom_point(shape = 21) +
-    geom_smooth(method = "lm") +
-    theme_bw() +
-    
-    #Improve annotation:
-    scale_fill_manual(values = c("DNBS + FMTCTR"  = "#2166ac", 
-                                 "DNBS + FMTDNBS" = "#b2182b"))+
-    ylab(p$name[1]) +
-    xlab(p$name[2]) +
-    ggtitle(paste(p$name[1], "vs", p$name[2]))
-  
-})
-
-#Call patchwork to unify and arrange the first  plots
-
-t_anansi_dotplot <- wrap_plots(plotted) + plot_layout(guides = 'collect')
-
+# library(anansi)
+# 
+# metab    <- read.delim("raw/Therapeutic_FMT_for_anansi.csv", sep = ",", row.names = 1, header = T)
+# KOs      <- read.delim("raw/pred_metagenome_unstrat.tsv", sep = "\t", row.names = 1, header = T)
+# metadata <- read.delim("raw/metadata_DNBS.csv", sep = ",")
+# 
+# 
+# #Fix metadata in accordance with genus names
+# metadata$ID <- gsub(metadata$ID, pattern = "-", replacement = ".")
+# metadata = metadata[!metadata$ID %in% c("DNBS.17", "DNBS.29", "DNBS.38", "DNBS.41", "DNBS.8"),]
+# 
+# metadata$Timepoint = factor(metadata$Timepoint, levels = c("FMT", "D0", "D7", "D42"))
+# metadata = metadata[metadata$Experiment == "Therapeutic",]
+# 
+# metadata = metadata[metadata$Timepoint == "D42",]
+# 
+# metadata = metadata[!metadata$ID %in% c("DNBS.4", "DNBS.15", "DNBS.28", "DNBS.33", "DNBS.43", "DNBS.100", "DNBS.104"),]
+# 
+# KOs      = KOs[,metadata$ID]
+# 
+# KOs.exp  = clr_c(KOs)
+# 
+# t2       = t(KOs.exp)
+# 
+# metab    = metab[,metadata$ID]
+# 
+# metab.exp = clr_c(metab) 
+# 
+# t1       = t(metab.exp)
+# 
+# data(dictionary)
+# anansi_dic = anansi_dic
+# web <- weaveWebFromTables(tableY = t1, tableX = t2, dictionary = anansi_dic)
+# 
+# anansi_out <- anansi(web    = web,          #Generated above
+#                      method = "pearson",    #define the type of correlation used 
+#                      formula = ~ Treatment, #Define formula to be fitted 
+#                      metadata = metadata,   #where is the metadata
+#                      adjust.method = "BH",  #apply the Benjamini-Hochberg procedure for FDR
+#                      verbose = T            #To let you know what's happening
+# )
+# 
+# 
+# anansiLong <- spinToLong(anansi_output = anansi_out, translate = T, 
+#                          Y_translation = anansi::cpd_translation, 
+#                          X_translation = anansi::KO_translation)  
+# #Now it's ready to be plugged into ggplot2, though let's clean up a bit more. 
+# 
+# #Only consider interactions where the entire model fits well enough. 
+# anansiLong <- anansiLong[anansiLong$model_full_q.values < 0.1,]
+# 
+# t_anansi_corplot <- ggplot(data = anansiLong, 
+#                            aes(x      = r.values, 
+#                                y      = feature_X, 
+#                                fill   = type, 
+#                                alpha  = model_disjointed_Treatment_p.values < 0.05)) + 
+#   
+#   #Make a vertical dashed red line at x = 0
+#   geom_vline(xintercept = 0, linetype = "dashed", colour = "red")+
+#   
+#   #Points show  raw correlation coefficients
+#   geom_point(shape = 21, size = 3) + 
+#   
+#   #facet per compound
+#   ggforce::facet_col(~feature_Y, space = "free", scales = "free_y") + 
+#   
+#   #fix the scales, labels, theme and other layout
+#   scale_y_discrete(limits = rev, position = "right") +
+#   scale_alpha_manual(values = c("TRUE" = 1, "FALSE" = 1/3)) +
+#   scale_fill_manual(values = c("DNBS + FMTCTR"  = "#2166ac", 
+#                                "DNBS + FMTDNBS" = "#b2182b", 
+#                                "All"            = "gray"))+
+#   theme_bw() + 
+#   ylab(NULL) + 
+#   xlab("Pearson's rho")
+# 
+# 
+# outPlots = spinToPlots(anansi_out,
+#                        target = anansi_out@input@web@dictionary &
+#                          anansi_out@output@model_results$modelfit@q.values < 0.1, 
+#                        Y_translation = anansi::cpd_translation, 
+#                        X_translation = anansi::KO_translation, translate = T )
+# 
+# #load ggplot2 and patchwork for plotting
+# 
+# library(ggplot2)
+# library(patchwork)
+# 
+# plotted = lapply(outPlots, FUN = function(p){
+#   
+#   #Main ggplot call
+#   ggplot(data = p$data, aes(x = X, y = Y, fill = groups)) +
+#     
+#     #Establish geoms:
+#     geom_point(shape = 21) +
+#     geom_smooth(method = "lm") +
+#     theme_bw() +
+#     
+#     #Improve annotation:
+#     scale_fill_manual(values = c("DNBS + FMTCTR"  = "#2166ac", 
+#                                  "DNBS + FMTDNBS" = "#b2182b"))+
+#     ylab(p$name[1]) +
+#     xlab(p$name[2]) +
+#     ggtitle(paste(p$name[1], "vs", p$name[2]))
+#   
+# })
+# 
+# #Call patchwork to unify and arrange the first  plots
+# 
+# t_anansi_dotplot <- wrap_plots(plotted) + plot_layout(guides = 'collect')
+# 

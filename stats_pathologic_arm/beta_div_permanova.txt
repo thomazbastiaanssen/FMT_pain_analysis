@@ -1,14 +1,11 @@
 Permutation test for adonis under reduced model
-Terms added sequentially (first to last)
 Permutation: free
 Number of permutations: 10000
 
 adonis2(formula = dis_ait ~ Timepoint * Treatment, data = meta_perm, permutations = 10000, method = "euclidean")
-                    Df SumOfSqs      R2      F    Pr(>F)    
-Timepoint            1    964.7 0.22372 9.1488 9.999e-05 ***
-Treatment            1    265.9 0.06168 2.5222    0.0164 *  
-Timepoint:Treatment  1    129.0 0.02991 1.2232    0.2478    
-Residual            28   2952.4 0.68469                     
-Total               31   4312.1 1.00000                     
+         Df SumOfSqs      R2     F    Pr(>F)    
+Model     3   1359.6 0.31531 4.298 9.999e-05 ***
+Residual 28   2952.4 0.68469                    
+Total    31   4312.1 1.00000                    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
