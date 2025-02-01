@@ -258,8 +258,8 @@ p_genus <- genBH %>%
             by = c("name" = "feature")) %>% 
   
   mutate(stars = case_when(`anovas.Treatment:Timepoint Pr(>F)` < 0.001  ~ "⁂",
-                           `anovas.Treatment:Timepoint Pr(>F)` < 0.01  ~ "🞱",
-                           `anovas.Treatment:Timepoint Pr(>F)` < 0.05 ~ "🞱🞱", .default = ""),  
+                           `anovas.Treatment:Timepoint Pr(>F)` < 0.01  ~ "🞱🞱",
+                           `anovas.Treatment:Timepoint Pr(>F)` < 0.05 ~ "🞱", .default = ""),  
            name = str_replace(name, ".*ales_", "")) %>%  
 
   ggplot(aes(x     = Timepoint, 
