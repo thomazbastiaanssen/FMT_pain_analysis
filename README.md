@@ -16,7 +16,7 @@ library(patchwork)
 ``` r
 (p_alpha + p_beta + plot_layout(widths = c(3, 2)) ) / p_genus + 
   plot_layout(guides = 'collect') + 
-  plot_annotation(tag_levels = "i")
+  plot_annotation(tag_levels = "i") 
 ```
 
 ![](README_files/figure-gfm/plot_path-1.png)<!-- -->
@@ -35,7 +35,7 @@ library(patchwork)
 ``` r
 (t_alpha + t_beta + plot_layout(widths = c(3, 2)) ) / t_GBM + 
   plot_layout(guides = 'collect') + 
-  plot_annotation(tag_levels = "i")
+  plot_annotation(tag_levels = "i") 
 ```
 
 ![](README_files/figure-gfm/plot_ther-1.png)<!-- -->

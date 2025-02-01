@@ -30,7 +30,8 @@ set.seed(1)
 
 #Load in the genus level count table and the metadata file. 
 counts   <- read.delim("raw/genus_table_from_dada2.csv", sep = ",", row.names = 1, header = T)
-metadata <- read.delim("raw/metadata_DNBS.csv", sep = ",")
+metadata <- read.delim("raw/metadata_DNBS.csv", sep = ",") %>% 
+  mutate(Treatment = str_replace(Treatment, pattern = "x \\+ F", replacement = "x+F"))
 
 #Fix metadata in accordance with genus names
 metadata$ID <- gsub(metadata$ID, pattern = "-", replacement = ".")
@@ -90,16 +91,18 @@ p_alpha <- alpha_diversity %>%
              group = Treatment)) + 
   geom_boxplot(alpha = 1/2, coef = 100, position = position_dodge(), show.legend = FALSE) + 
   geom_beeswarm(size = 4, cex = 3, shape = 21, show.legend = FALSE) + 
- # scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx + FMTCTR.D0" = "#9ecae1", "abx + FMTCTR.D7" = "#4292c6", "abx + FMTCTR.D32" = "#08519c", 
- #                              "DNBS.FMT" = "#67000d", "abx + FMTDNBS.D0" = "#fc9272", "abx + FMTDNBS.D7" = "#ef3b2c", "abx + FMTDNBS.D32" = "#a50f15"), 
+ # scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx+FMTCTR.D0" = "#9ecae1", "abx+FMTCTR.D7" = "#4292c6", "abx+FMTCTR.D32" = "#08519c", 
+ #                              "DNBS.FMT" = "#67000d", "abx+FMTDNBS.D0" = "#fc9272", "abx+FMTDNBS.D7" = "#ef3b2c", "abx+FMTDNBS.D32" = "#a50f15"), 
  #                                        "Legend") +
-  scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx + FMTCTR.D0" = "#9ecae1", "abx + FMTCTR.D32" = "#08519c", 
-                               "DNBS.FMT" = "#67000d", "abx + FMTDNBS.D0" = "#fc9272", "abx + FMTDNBS.D32" = "#a50f15"), 
+  scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx+FMTCTR.D0" = "#9ecae1", "abx+FMTCTR.D32" = "#08519c", 
+                               "DNBS.FMT" = "#67000d", "abx+FMTDNBS.D0" = "#fc9272", "abx+FMTDNBS.D32" = "#a50f15"), 
                     "Legend") +
+
   guides(shape = "none", fill = guide_legend(override.aes = list(shape = c(23, 23, 21, 21, 21, 21)))) +
   ggh4x::facet_nested(name~Timepoint*type, scales = "free", strip = ggh4x::strip_nested(bleed = TRUE)) + theme_bw()  +
 
-  ylab("Alpha diversity index") + xlab(NULL) 
+  ylab("Alpha diversity index") + xlab(NULL) + 
+  theme(text = element_text(size = 14), axis.text.x = element_text(size = 11))
 
 
 #Alpha Div stats Chao1
@@ -169,6 +172,19 @@ pca$Treatment           = metadata$Treatment
 pca$`Sample Type`       = metadata$sample_type
 pca$Timepoint           = metadata$Timepoint
 
+
+#Compute euclidean distance over CLR-transformed values (i.e. Aitchison distance).
+meta_perm  = metadata[metadata$Timepoint %in% c("D0", "D32"),]
+genus_perm = genus.exp[,meta_perm$ID]
+dis_ait = dist(t(genus_perm), method = "euclidean")
+#Perform a PERMANOVA (PERmutational Multivariate ANalysis Of VAriance) test.
+beta_div_path <- adonis2(dis_ait ~  Timepoint *Treatment,  
+                         data = meta_perm, method = "euclidean", permutations = 10000, by = "terms")
+
+beta_div_path %>%
+  capture.output(.,file = "stats_pathologic_arm/beta_div_permanova.txt")
+
+
 #First, the main plot. Plot the first two components of the PCA
 p_beta <- ggplot(pca %>% mutate(type = "\nMicrobial composition over time (PCA)\n"), 
             aes(x       = PC1, 
@@ -183,35 +199,36 @@ p_beta <- ggplot(pca %>% mutate(type = "\nMicrobial composition over time (PCA)\
   geom_path() +
   geom_point(size=5, col = "black", alpha = 1) + 
   stat_ellipse(geom = "polygon", alpha = 1/4, show.legend = FALSE) +
+  annotate(geom = "text", 
+           label = 
+"Timepoint:
+Treatment:" , 
+           x = I(0.625), y = I(0.175), colour = "black",  size = 6, hjust = 0) +
+  annotate(geom = "text", 
+           label = 
+"⁂
+🞱" , 
+           x = I(0.925), y = I(0.175), colour = "black", size = 6, hjust = 1/2) +
+  
   
   #Adjust appearance
   guides(shape = "none", fill = guide_legend(override.aes = list(shape = c(23, 23, 21, 21, 21, 21)))) +
   scale_shape_manual(values = c("FMT Pool" = 23, "fecal sample" = 21)) +
-  # scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx + FMTCTR.D0" = "#9ecae1", "abx + FMTCTR.D7" = "#4292c6", "abx + FMTCTR.D32" = "#08519c", 
-  #                              "DNBS.FMT" = "#67000d", "abx + FMTDNBS.D0" = "#fc9272", "abx + FMTDNBS.D7" = "#ef3b2c", "abx + FMTDNBS.D32" = "#a50f15"), 
+  # scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx+FMTCTR.D0" = "#9ecae1", "abx+FMTCTR.D7" = "#4292c6", "abx+FMTCTR.D32" = "#08519c", 
+  #                              "DNBS.FMT" = "#67000d", "abx+FMTDNBS.D0" = "#fc9272", "abx+FMTDNBS.D7" = "#ef3b2c", "abx+FMTDNBS.D32" = "#a50f15"), 
   #                                        "Legend") +
-  scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx + FMTCTR.D0" = "#9ecae1", "abx + FMTCTR.D32" = "#08519c", 
-                               "DNBS.FMT" = "#67000d", "abx + FMTDNBS.D0" = "#fc9272", "abx + FMTDNBS.D32" = "#a50f15"), 
+  scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx+FMTCTR.D0" = "#9ecae1", "abx+FMTCTR.D32" = "#08519c", 
+                               "DNBS.FMT" = "#67000d", "abx+FMTDNBS.D0" = "#fc9272", "abx+FMTDNBS.D32" = "#a50f15"), 
                     "Legend") +
   scale_alpha_manual(values = c("FMT Pool" = 0, "fecal sample" = 1)) + 
-  scale_colour_manual(values = c("abx + FMTCTR" = "#3690c0", "abx + FMTDNBS" = "#ef6548")) +
-  
+  scale_colour_manual(values = c("abx+FMTCTR" = "#3690c0", "abx+FMTDNBS" = "#ef6548")) +
   facet_wrap(~type) +
   #Adjust labels
   xlab(paste("PC1: ", pc1,  "%", sep="")) + 
   ylab(paste("PC2: ", pc2,  "%", sep="")) + 
-  theme_bw() + guides(colour = "none", alpha = "none")
+  theme_bw() + guides(colour = "none", alpha = "none") + 
+  theme(text = element_text(size = 14))
 
-#Compute euclidean distance over CLR-transformed values (i.e. Aitchison distance).
-meta_perm  = metadata[metadata$Timepoint %in% c("D0", "D32"),]
-genus_perm = genus.exp[,meta_perm$ID]
-dis_ait = dist(t(genus_perm), method = "euclidean")
-
-#Perform a PERMANOVA (PERmutational Multivariate ANalysis Of VAriance) test.
-adonis2(dis_ait ~ Timepoint * Treatment,  
-        data = meta_perm, method = "euclidean", permutations = 10000) %>%
-  
-  capture.output(.,file = "stats_pathologic_arm/beta_div_permanova.txt")
 
 
 # Differential abundance analysis -----------------------------------------
@@ -235,19 +252,38 @@ p_genus <- genBH %>%
   add_column(Timepoint = metadata$Timepoint, 
              Treatment = metadata$Treatment)  %>%
   pivot_longer(!c("Timepoint", "Treatment"))  %>%
-  mutate(name = str_replace(name, ".*ales_", "")) %>% 
+  
+  left_join(., genus.glm %>% dplyr::select("feature", "anovas.Treatment:Timepoint Pr(>F).BH",
+                                           "anovas.Treatment:Timepoint Pr(>F)"), 
+            by = c("name" = "feature")) %>% 
+  
+  mutate(stars = case_when(`anovas.Treatment:Timepoint Pr(>F)` < 0.001  ~ "⁂",
+                           `anovas.Treatment:Timepoint Pr(>F)` < 0.01  ~ "🞱",
+                           `anovas.Treatment:Timepoint Pr(>F)` < 0.05 ~ "🞱🞱", .default = ""),  
+           name = str_replace(name, ".*ales_", "")) %>%  
+
   ggplot(aes(x     = Timepoint, 
              y     = value, 
              fill  = interaction(Treatment, Timepoint))) + 
   geom_boxplot(alpha = 1/2, coef = 100, show.legend = FALSE) +
   geom_dotplot(binaxis = "y", stackdir = "center", position = position_dodge(0.75), show.legend = FALSE) + 
   
-  facet_wrap(~name, scales = "free_y", ncol = 4) +
-  scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx + FMTCTR.D0"  = "#9ecae1", "abx + FMTCTR.D7"  = "#4292c6", "abx + FMTCTR.D32"  = "#08519c", 
-                               "DNBS.FMT" = "#67000d", "abx + FMTDNBS.D0" = "#fc9272", "abx + FMTDNBS.D7" = "#ef3b2c", "abx + FMTDNBS.D32" = "#a50f15"), "Legend") +
-  guides(shape = "none", fill = guide_legend(override.aes = list(shape = c(23, 23, 21, 21, 21, 21)))) +
+  geom_text(data = . %>% 
+              dplyr::select(name, `anovas.Treatment:Timepoint Pr(>F)`, stars) %>% 
+              distinct(name, .keep_all = TRUE), 
+            inherit.aes = FALSE, show.legend = FALSE,
+            aes(label = stars,  alpha = `anovas.Treatment:Timepoint Pr(>F)` < 0.05),
+            x = 2.5, y = Inf, vjust = 2, color = "black", size = 4) +
+  geom_vline(xintercept = 1.5, colour = "darkgray", linetype = "dashed", linewidth = 1) +
   
-  ylab("Genus-level abundance (CLR)") + xlab(NULL) + theme_bw() + theme(text = element_text(size = 12))
+  facet_wrap(~name, scales = "free_y", ncol = 4) +
+  scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx+FMTCTR.D0"  = "#9ecae1", "abx+FMTCTR.D7"  = "#4292c6", "abx+FMTCTR.D32"  = "#08519c", 
+                               "DNBS.FMT" = "#67000d", "abx+FMTDNBS.D0" = "#fc9272", "abx+FMTDNBS.D7" = "#ef3b2c", "abx+FMTDNBS.D32" = "#a50f15"), "Legend") +
+  scale_alpha_manual(values = c("TRUE" = 1, "FALSE" = 0)) +
+    guides(shape = "none", fill = guide_legend(override.aes = list(shape = c(23, 23, 21, 21, 21, 21)))) +
+  
+  ylab("Genus-level abundance (CLR)") + xlab(NULL) + theme_bw() + 
+  theme(text = element_text(size = 14))
 
 # GBMs --------------------------------------------------------------------
 
@@ -304,9 +340,9 @@ GBMBH <-  GBMs.exp[GBMs.glm[GBMs.glm$`anovas.Treatment:Timepoint Pr(>F).BH` < 0.
 #   geom_dotplot(binaxis = "y", stackdir = "center", position = position_dodge(0.75)) + 
 #   
 #   facet_wrap(~name, scales = "free_y", ncol = 4) +
-#   scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx + FMTCTR.D0"  = "#9ecae1", "abx + FMTCTR.D7"  = "#4292c6", "abx + FMTCTR.D32"  = "#08519c", 
-#                                "DNBS.FMT" = "#67000d", "abx + FMTDNBS.D0" = "#fc9272", "abx + FMTDNBS.D7" = "#ef3b2c", "abx + FMTDNBS.D32" = "#a50f15"), "Legend") +
-#   ylab(NULL) + xlab(NULL) + theme_bw() + theme(text = element_text(size = 12))
+#   scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx+FMTCTR.D0"  = "#9ecae1", "abx+FMTCTR.D7"  = "#4292c6", "abx+FMTCTR.D32"  = "#08519c", 
+#                                "DNBS.FMT" = "#67000d", "abx+FMTDNBS.D0" = "#fc9272", "abx+FMTDNBS.D7" = "#ef3b2c", "abx+FMTDNBS.D32" = "#a50f15"), "Legend") +
+#   ylab(NULL) + xlab(NULL) + theme_bw() + theme(text = element_text(size = 14))
 
 # GMMs --------------------------------------------------------------------
 
@@ -362,9 +398,9 @@ GMMBH <-  GMMs.exp[GMMs.glm[GMMs.glm$`anovas.Treatment:Timepoint Pr(>F).BH` < 0.
 #   geom_dotplot(binaxis = "y", stackdir = "center", position = position_dodge(0.75)) + 
 #   
 #   facet_wrap(~name, scales = "free_y", ncol = 4) +
-#   scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx + FMTCTR.D0"  = "#9ecae1", "abx + FMTCTR.D7"  = "#4292c6", "abx + FMTCTR.D32"  = "#08519c", 
-#                                "DNBS.FMT" = "#67000d", "abx + FMTDNBS.D0" = "#fc9272", "abx + FMTDNBS.D7" = "#ef3b2c", "abx + FMTDNBS.D32" = "#a50f15"), "Legend") +
-#   ylab(NULL) + xlab(NULL) + theme_bw() + theme(text = element_text(size = 12))
+#   scale_fill_manual(values = c("CTRL.FMT" = "#08306b", "abx+FMTCTR.D0"  = "#9ecae1", "abx+FMTCTR.D7"  = "#4292c6", "abx+FMTCTR.D32"  = "#08519c", 
+#                                "DNBS.FMT" = "#67000d", "abx+FMTDNBS.D0" = "#fc9272", "abx+FMTDNBS.D7" = "#ef3b2c", "abx+FMTDNBS.D32" = "#a50f15"), "Legend") +
+#   ylab(NULL) + xlab(NULL) + theme_bw() + theme(text = element_text(size = 14))
 
 
 
@@ -438,8 +474,8 @@ GMMBH <-  GMMs.exp[GMMs.glm[GMMs.glm$`anovas.Treatment:Timepoint Pr(>F).BH` < 0.
 #   #fix the scales, labels, theme and other layout
 #   scale_y_discrete(limits = rev, position = "right") +
 #   scale_alpha_manual(values = c("TRUE" = 1, "FALSE" = 1/3)) +
-#   scale_fill_manual(values = c("abx + FMTCTR" = "#2166ac", 
-#                                "abx + FMTDNBS"  = "#b2182b", 
+#   scale_fill_manual(values = c("abx+FMTCTR" = "#2166ac", 
+#                                "abx+FMTDNBS"  = "#b2182b", 
 #                                "All"        = "gray"))+
 #   theme_bw() + 
 #   ylab(NULL) + 
@@ -469,8 +505,8 @@ GMMBH <-  GMMs.exp[GMMs.glm[GMMs.glm$`anovas.Treatment:Timepoint Pr(>F).BH` < 0.
 #     theme_bw() +
 #     
 #     #Improve annotation:
-#     scale_fill_manual(values = c("abx + FMTCTR"  = "#2166ac", 
-#                                  "abx + FMTDNBS" = "#b2182b"))+
+#     scale_fill_manual(values = c("abx+FMTCTR"  = "#2166ac", 
+#                                  "abx+FMTDNBS" = "#b2182b"))+
 #     ylab(p$name[1]) +
 #     xlab(p$name[2]) +
 #     ggtitle(paste(p$name[1], "vs", p$name[2]))
